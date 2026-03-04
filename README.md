@@ -24,18 +24,19 @@ A short demonstration of the implemented ADAS features in the CARLA simulator.
 https://your-video-link-here
 
 The video demonstrates:
-
-- Lane Detection using UFLDv2
-- Lane Departure Warning (LDW)
-- Time-to-Collision (TTC) based Forward Collision Warning
-- Autonomous Emergency Braking (AEB)
-- Real-time HUD visualization
+* Lane Detection using UFLDv2
+* Lane Departure Warning (LDW)
+* Time-to-Collision (TTC) based Forward Collision Warning
+* Autonomous Emergency Braking (AEB)
+* Traffic Light Detection and Intersection Compliance
+* Real-time HUD visualization
 
 ### 🌟 Key Technical Features
 * **Zero-Latency Lane Tracking:** Instantaneous polynomial curve fitting mapping 2D UFLD classifications directly to the 3D CARLA environment.
 * **Domain Shift Calibration:** Custom FOV scaling (1.25x) and linear horizon mapping to adapt real-world 60° dashcam training weights to 90° simulated lenses.
 * **Bulletproof LDW:** Bumper-level lane offset calculation utilizing a dynamic single-line tracking fallback to prevent line-of-sight failures during high-frequency maneuvers.
 * **Time-to-Collision (TTC) Engine:** RGB and Depth sensor fusion generating real-time closing velocities to actuate Autonomous Emergency Braking (AEB).
+* **Traffic Signal Compliance:** YOLOv8-driven state classification that maps traffic light bounding boxes to the longitudinal control module, enforcing strict intersection compliance by overriding the throttle and triggering deceleration at red signals.
 
 ## ⚙️ System Architecture
 The system is divided into three asynchronous layers:

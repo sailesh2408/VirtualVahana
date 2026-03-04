@@ -151,9 +151,10 @@ In your project workspace, execute the main control script:
 python main.py
 ```
 
-**Controls inside the PyGame Window:**
-* The vehicle will begin autonomous tracking automatically.
-* The HUD overlay will display real-time Lane Status (Secure/Warning), TTC Alerts, and ADAS Trust percentages.
+**🎮 Controls inside the PyGame Window:**
+* **`L` Key (Lane Keep Assist):** Toggle LKA. When enabled, the system will automatically steer to keep the vehicle centered in the lane.
+* **`C` Key (Adaptive Cruise Control):** Toggle ACC. When enabled, the system automatically manages your speed (acceleration and braking) based on traffic and obstacles, allowing you to manually control the steering direction.
+* The HUD overlay will display real-time Lane Status (Secure/Warning), TTC Alerts, ADAS Trust percentages, and your active LKA/ACC states.
 
 ## 📄 License & Acknowledgments
 * **UFLDv2 Architecture:** Inspired by Qin et al.'s work on structure-aware deep lane detection.

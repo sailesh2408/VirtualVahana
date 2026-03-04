@@ -20,7 +20,7 @@ To combat simulator domain shift and screen-space latency, this project discards
 
 Watch the working demo of the implemented ADAS features.
 
-[Watch the Demo](https://youtu.be/NW9y5QJivCw)
+[Demo Video](https://youtu.be/NW9y5QJivCw)
 
 The video demonstrates:
 * Lane Detection using UFLDv2

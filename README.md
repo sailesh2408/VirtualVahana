@@ -83,14 +83,12 @@ Report Contents:
 
 The system calculates TTC using the relative velocity between the ego vehicle and detected obstacles.
 
-\[
-TTC = \frac{D_{current}}{V_{rel}}
-\]
+**TTC = D_current / V_rel**
 
 Where:
 
-- \(D_{current}\) = current distance to obstacle
-- \(V_{rel}\) = relative closing velocity
+- **D_current** = current distance to obstacle  
+- **V_rel** = relative closing velocity
 
 If TTC falls below safety thresholds, the system triggers warnings or braking.
 
@@ -114,8 +112,9 @@ Priority order:
 4️⃣ Lane Departure Warning
 
 ## 🖥️ Dashboard & HUD Visualization
-![dashboard](docs/Screenshot from 2026-03-04 06-34-13)
-
+<p align="center">
+  <img src="docs/dashboard" width="700"/>
+</p>
 ## 🛠️ Prerequisites & Installation
 
 **1. Clone the Repository**

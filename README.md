@@ -35,7 +35,7 @@ The video demonstrates:
 
 The system follows a perception → decision → control pipeline.
 
-![Architecture Diagram](docs/architecture_diagram.png)
+![Architecture Diagram](docs/architechture_wide.png)
 
 ### Module Breakdown
 

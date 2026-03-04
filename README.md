@@ -7,7 +7,7 @@
 
 **Event:** Virtual Vahana Contest 2026 (Phase 1 Technical Submission)  
 **Institution:** Amrita Vishwa Vidyapeetham, Kollam, Kerala  
-**Team Members:** Y Sai Sailesh Reddy | Bhavana PH | Sidharth R Krishna  
+**Team Members:** Y Sai Sailesh Reddy | Bhavana PH | Sidharth R Krishna | Akhil A Kumar | Pritty Vijay
 
 ---
 

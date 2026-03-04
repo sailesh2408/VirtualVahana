@@ -16,12 +16,11 @@ This repository contains a closed-loop Advanced Driver Assistance System (ADAS) 
 
 To combat simulator domain shift and screen-space latency, this project discards traditional temporal smoothing (EMA/Kalman filters) in favor of a **Zero-Latency Perspective Mapping Algorithm**. By mathematically translating 2D row-classifications into 3D simulator space using custom Field-of-View (FOV) scalars, the system guarantees physical lane adherence and drives a highly responsive arbitration engine.
 
-## 🎥 Simulator Demo (3–5 Minutes)
+## 🎥 Simulator Demo
 
-A short demonstration of the implemented ADAS features in the CARLA simulator.
+Watch the working demo of the implemented ADAS features.
 
-**Demo Video:**  
-https://your-video-link-here
+[![Watch Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)]([https://www.youtube.com/watch?v=VIDEO_ID](https://youtu.be/NW9y5QJivCw?si=pLhJCXhWcWJRldkK))
 
 The video demonstrates:
 * Lane Detection using UFLDv2

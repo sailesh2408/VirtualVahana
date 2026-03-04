@@ -16,6 +16,38 @@ This repository contains a closed-loop Advanced Driver Assistance System (ADAS) 
 
 To combat simulator domain shift and screen-space latency, this project discards traditional temporal smoothing (EMA/Kalman filters) in favor of a **Zero-Latency Perspective Mapping Algorithm**. By mathematically translating 2D row-classifications into 3D simulator space using custom Field-of-View (FOV) scalars, the system guarantees physical lane adherence and drives a highly responsive arbitration engine.
 
+## 🎥 Simulator Demo (3–5 Minutes)
+
+A short demonstration of the implemented ADAS features in the CARLA simulator.
+
+**Demo Video:**  
+https://your-video-link-here
+
+The video demonstrates:
+
+- Lane Detection using UFLDv2
+- Lane Departure Warning (LDW)
+- Time-to-Collision (TTC) based Forward Collision Warning
+- Autonomous Emergency Braking (AEB)
+- Real-time HUD visualization
+
+## 🧠 ADAS System Architecture
+
+The system follows a perception → decision → control pipeline.
+
+![Architecture Diagram](docs/architecture_diagram.png)
+
+### Module Breakdown
+
+| Module | Description |
+|------|------|
+| Sensor Input | RGB + Depth from CARLA |
+| Perception | YOLOv8 + UFLDv2 neural networks |
+| Feature Logic | Lane offset and TTC computation |
+| Arbitration Engine | Handles conflicts between ADAS actions |
+| Vehicle Control | Steering and braking commands |
+
+
 ### 🌟 Key Technical Features
 * **Zero-Latency Lane Tracking:** Instantaneous polynomial curve fitting mapping 2D UFLD classifications directly to the 3D CARLA environment.
 * **Domain Shift Calibration:** Custom FOV scaling (1.25x) and linear horizon mapping to adapt real-world 60° dashcam training weights to 90° simulated lenses.

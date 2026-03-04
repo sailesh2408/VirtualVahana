@@ -1,0 +1,15 @@
+# Environments
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# AI Model Weights (Too large for GitHub)
+*.pt
+*.pth
+models/
+
+# OS generated files
+.DS_Store

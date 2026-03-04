@@ -31,6 +31,19 @@ The video demonstrates:
 - Autonomous Emergency Braking (AEB)
 - Real-time HUD visualization
 
+### 🌟 Key Technical Features
+* **Zero-Latency Lane Tracking:** Instantaneous polynomial curve fitting mapping 2D UFLD classifications directly to the 3D CARLA environment.
+* **Domain Shift Calibration:** Custom FOV scaling (1.25x) and linear horizon mapping to adapt real-world 60° dashcam training weights to 90° simulated lenses.
+* **Bulletproof LDW:** Bumper-level lane offset calculation utilizing a dynamic single-line tracking fallback to prevent line-of-sight failures during high-frequency maneuvers.
+* **Time-to-Collision (TTC) Engine:** RGB and Depth sensor fusion generating real-time closing velocities to actuate Autonomous Emergency Braking (AEB).
+
+## ⚙️ System Architecture
+The system is divided into three asynchronous layers:
+1. **Perception Layer (RTX 5070 Ti):** Ingests raw sensor data, strips the sky via extrinsic cropping, and evaluates the tensors through ResNet-18 (UFLDv2) and YOLOv8 simultaneously.
+2. **Feature Logic Layer (CPU):** Evaluates cross-track error and TTC based on strictly spatial data coordinates.
+3. **Arbitration Matrix:** A deterministic state machine ensuring longitudinal safety (FCW/AEB) overrides lateral precision (LKA/LDW).
+
+
 ## 🧠 ADAS System Architecture
 
 The system follows a perception → decision → control pipeline.
@@ -47,18 +60,61 @@ The system follows a perception → decision → control pipeline.
 | Arbitration Engine | Handles conflicts between ADAS actions |
 | Vehicle Control | Steering and braking commands |
 
+## 📑 Technical Report
 
-### 🌟 Key Technical Features
-* **Zero-Latency Lane Tracking:** Instantaneous polynomial curve fitting mapping 2D UFLD classifications directly to the 3D CARLA environment.
-* **Domain Shift Calibration:** Custom FOV scaling (1.25x) and linear horizon mapping to adapt real-world 60° dashcam training weights to 90° simulated lenses.
-* **Bulletproof LDW:** Bumper-level lane offset calculation utilizing a dynamic single-line tracking fallback to prevent line-of-sight failures during high-frequency maneuvers.
-* **Time-to-Collision (TTC) Engine:** RGB and Depth sensor fusion generating real-time closing velocities to actuate Autonomous Emergency Braking (AEB).
+The complete technical report describing the system architecture, algorithms, and results is available here:
 
-## ⚙️ System Architecture
-The system is divided into three asynchronous layers:
-1. **Perception Layer (RTX 5070 Ti):** Ingests raw sensor data, strips the sky via extrinsic cropping, and evaluates the tensors through ResNet-18 (UFLDv2) and YOLOv8 simultaneously.
-2. **Feature Logic Layer (CPU):** Evaluates cross-track error and TTC based on strictly spatial data coordinates.
-3. **Arbitration Matrix:** A deterministic state machine ensuring longitudinal safety (FCW/AEB) overrides lateral precision (LKA/LDW).
+📄 **[Download Technical Report](docs/Virtual_vahana.pdf)**
+
+Report Contents:
+
+- Problem Statement
+- System Overview
+- Architecture
+- Methodology
+- Algorithms & Calculations
+- Results & Observations
+- Challenges
+- Future Scope
+
+## ⚡ Feature Logic
+
+### Time to Collision (TTC)
+
+The system calculates TTC using the relative velocity between the ego vehicle and detected obstacles.
+
+\[
+TTC = \frac{D_{current}}{V_{rel}}
+\]
+
+Where:
+
+- \(D_{current}\) = current distance to obstacle
+- \(V_{rel}\) = relative closing velocity
+
+If TTC falls below safety thresholds, the system triggers warnings or braking.
+
+### Threshold Values
+
+| TTC Value | Action |
+|------|------|
+| TTC ≤ 1.0 s | Autonomous Emergency Braking |
+| TTC ≤ 2.5 s | Collision Warning |
+| TTC > 2.5 s | Normal Driving |
+
+### Arbitration Logic
+
+The arbitration engine ensures safety actions take priority.
+
+Priority order:
+
+1️⃣ Autonomous Emergency Braking (AEB)  
+2️⃣ Collision Warning  
+3️⃣ Lane Keep Assist  
+4️⃣ Lane Departure Warning
+
+## 🖥️ Dashboard & HUD Visualization
+![dashboard](docs/Screenshot from 2026-03-04 06-34-13)
 
 ## 🛠️ Prerequisites & Installation
 
